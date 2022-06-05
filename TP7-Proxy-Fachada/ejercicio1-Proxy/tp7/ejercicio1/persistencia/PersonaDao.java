@@ -30,8 +30,6 @@ public class PersonaDao {
 	public Persona personaPorId(int id) {
 
 		String sqlPersonas = "select p.nombre " + "from personas p " + "where p.id = ?";
-		String sqlCompleto = "select p.nombre,t.numero " + "from personas p, telefonos t "
-				+ "where p.id = t.idpersona and p.id = ?";
 		try (Connection conn = obtenerConexion(); PreparedStatement statement = conn.prepareStatement(sqlPersonas);) {
 			statement.setInt(1, id);
 			ResultSet result = statement.executeQuery();
@@ -39,7 +37,6 @@ public class PersonaDao {
 			String nombrePersona = null;
 			while (result.next()) {
 				nombrePersona = result.getString(1);
-				// telefonos.add(new Telefono(result.getString(2)));
 			}
 			Set<Telefono> proxyTelefonos = new ProxyHashSet(id);
 

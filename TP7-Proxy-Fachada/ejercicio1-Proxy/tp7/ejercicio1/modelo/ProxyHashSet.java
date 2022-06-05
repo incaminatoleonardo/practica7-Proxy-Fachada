@@ -12,8 +12,6 @@ import java.util.Set;
 
 public class ProxyHashSet implements Set {
 
-	// private HashSet<Telefono> telefonos; // No lo uso
-	// private Persona persona;
 	private int identificador;
 
 	public ProxyHashSet(int identificador) {
